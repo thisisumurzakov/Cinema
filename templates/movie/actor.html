@@ -1,0 +1,55 @@
+{% extends 'movie/base.html' %}
+{% load static %}
+{%block title%}{{actor.name}}{%endblock title%}
+{% block bg %} {% static 'single-post-pic2.jpg' %} {% endblock bg %}
+
+    {% block container %}
+        <div class="container py-md-3">
+    {% endblock container %}
+        {% block sidebar %}
+            <div class="side-bar col-lg-4">
+        {% endblock sidebar %}
+            {% block movie %}
+                <div class="left-ads-display col-lg-8">
+                    <div class="row">
+                        <div class="desc1-left col-md-6">
+                            <img src="{{actor.image.url}}" class="img-fluid" alt="">
+                        </div>
+                        <div class="desc1-right col-md-6 pl-lg-4">
+                            <h3 class="editContent" style="outline: none; cursor: inherit;">{{actor.name}}</h3>
+                            <ul>
+                                <li style="list-style: none"><span><b>Год:</b>{{actor.year}}</span></li
+                                <li style="list-style: none">
+                                    <span><b>Режиссер:</b>
+                                        {% for movie in actor.film_director.all %}
+                                            "{{movie.title}}"
+                                        {% endfor %}
+                                    </span></li>
+                                <li style="list-style: none"><span><b>Актер:</b>
+                                    {% for movie in actor.film_actor.all %}
+                                            "{{movie.title}}"
+                                    {% endfor %}
+                                </span></li>
+                        </div>
+                    </div>
+
+                    <div class="row sub-para-w3layouts mt-5">
+                        <hr color="black" width="100%">
+                        <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">{{actor.name}}:</h3>
+                    </div>
+                    <div class="row sub-para-w3layouts mt-5>
+                        <p>
+                            <img src="bundles/images/about.jpg" class="img-fluid" alt="">
+                            <img src="bundles/images/admin.jpg" class="img-fluid" alt="">
+                            <img src="bundles/images/d1.jpg" class="img-fluid" alt="">
+                        </p>
+                        <p class="editContent" style="outline: none; cursor: inherit;">{{actor.description|safe}}</p>
+                        <p class="mt-3 italic-blue editContent"
+                           style="outline: none; cursor: inherit;">
+                        </p>
+                    </div>
+            </div>
+            </div>
+        </div>
+        </div>
+            {% endblock movie %}
